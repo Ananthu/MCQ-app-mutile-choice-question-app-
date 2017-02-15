@@ -1,0 +1,21 @@
+{% extends 'quiz/base.html' %}
+
+
+{% block content %}
+
+	<h3>{{question.question_no}}.{{question.question_text}}</h3><br>
+	{{question.option1}}<br>
+	{{question.option2}}<br>
+	{{question.option3}}<br>
+	{{question.option4}}<br>
+	{{question.option5}}<br>
+	<br>
+	<h4>answer={{question.answer1}}</h4>
+
+	<br>
+
+	<a href="{% url 'quiz:update_question' question.pk %}"><h3>Edit</h3></a>
+	<a href="{% url 'quiz:delete_question' question.pk %}"><h3>Delete</h3></a>
+	
+
+{% endblock content %}

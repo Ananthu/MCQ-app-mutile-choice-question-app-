@@ -1,0 +1,16 @@
+{% extends 'quiz/base.html' %}
+
+{% block content %}
+
+	{% if question_set %}
+		<h2>These are the available questions</h2>
+		{% for question in question_set %}
+			<a href="{% url 'quiz:detail' question.id %}"><h4>{{question.question_text}}</h4></a>
+		{% endfor %}
+	{% else%}
+		<h1>No questions added,click the options to add some</h1>
+	{% endif %}
+	<br>
+	<h2><a href="{% url 'quiz:add_question' %}">Add a question</a></h2>
+	<h2><a href="{% url 'quiz:results' %}">Show Results</a></h2>
+{% endblock content %}

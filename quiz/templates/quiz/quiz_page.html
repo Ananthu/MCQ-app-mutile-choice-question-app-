@@ -1,0 +1,23 @@
+{% extends 'quiz/base.html' %}
+	{% block content%}
+	<h1>You are at quiz page</h1>
+	<h2>Logged in as {{user.username}}</h2>
+	<h3>email_id={{user.email}}</h3>
+	
+	<form action="{% url 'quiz:process_data' %}" method="post">
+		{% csrf_token %}
+	{% if question_set %}
+		{% for question in question_set %}
+			<h3>{{question.question_no}}.{{question.question_text }}</h3>
+			<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option1 }}">{{ question.option1 }}<br>
+			<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option2 }}">{{ question.option2 }}<br>
+			<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option3 }}">{{ question.option3 }}<br>
+			<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option4 }}">{{ question.option4 }}<br>
+			<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option5 }}">{{ question.option5 }}<br>
+		{% endfor %}
+		<input type="Submit" name="Submit">
+	{% else %}
+	<h1>No questions in the database , Admin need to add the questions</h1>
+	{% endif %}
+	</form>
+	{% endblock%}

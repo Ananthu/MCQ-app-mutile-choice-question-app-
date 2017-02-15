@@ -1,0 +1,23 @@
+{% extends 'quiz/base.html' %}
+	{% block content%}
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for result_object in result_objects %}
+      <tr>
+        <td>{{ result_object.username}}</td>
+        <td>{{ result_object.email}}</td>
+        <td>{{ result_object.score}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+	{% endblock content%}
