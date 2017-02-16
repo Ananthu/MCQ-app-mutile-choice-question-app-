@@ -21,6 +21,12 @@ Note:
 
 Admin-page
 ----------
+   _____________________________
+  |				|
+  |   username : admin		|
+  |   password : admin1234	|
+  |_____________________________|
+
 In the admin home page you can see questions as links.
 Click a question and you can see the details of that particular question
 
