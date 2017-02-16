@@ -1,23 +1,30 @@
 {% extends 'quiz/base.html' %}
 	{% block content%}
-	<h1>You are at quiz page</h1>
-	<h2>Logged in as {{user.username}}</h2>
-	<h3>email_id={{user.email}}</h3>
-	
-	<form action="{% url 'quiz:process_data' %}" method="post">
-		{% csrf_token %}
-	{% if question_set %}
-		{% for question in question_set %}
-			<h3>{{question.question_no}}.{{question.question_text }}</h3>
-			<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option1 }}">{{ question.option1 }}<br>
-			<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option2 }}">{{ question.option2 }}<br>
-			<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option3 }}">{{ question.option3 }}<br>
-			<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option4 }}">{{ question.option4 }}<br>
-			<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option5 }}">{{ question.option5 }}<br>
-		{% endfor %}
-		<input type="Submit" name="Submit">
-	{% else %}
-	<h1>No questions in the database , Admin need to add the questions</h1>
-	{% endif %}
-	</form>
+	<div class="col-md-6 col-md-offset-3">
+		<h1>You are at quiz page</h1>
+		<h2>Logged in as <strong>{{user.username}}</h2></strong>
+		<h3>email_id={{user.email}}</h3>
+	</div><br>
+	<div class="col-md-6 col-md-offset-1">
+		<form action="{% url 'quiz:process_data' %}" method="post">
+			{% csrf_token %}
+		{% if question_set %}
+			{% for question in question_set %}
+				<h3>{{question.question_no}}. {{question.question_text }}</h3>
+				<div class="col-md-offset-1 id="quiz">
+					<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option1 }}">{{ question.option1 }}<br>
+					<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option2 }}">{{ question.option2 }}<br>
+					<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option3 }}">{{ question.option3 }}<br>
+					<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option4 }}">{{ question.option4 }}<br>
+					<input type="radio" name="choice{{ question.question_no}}" value="{{ question.option5 }}">{{ question.option5 }}<br>
+				</div>
+			{% endfor %}
+			<div class="col-md-6 col-md-offset-2">
+				<input type="Submit" name="Submit">
+			</div>
+		{% else %}
+		<h1>No questions in the database , Admin need to add the questions</h1>
+		{% endif %}
+		</form>
+	</div>
 	{% endblock%}

@@ -5,7 +5,7 @@
 	{% if question_set %}
 		<h2>These are the available questions</h2>
 		{% for question in question_set %}
-			<a href="{% url 'quiz:detail' question.id %}"><h4>{{question.question_text}}</h4></a>
+			<a href="{% url 'quiz:detail' question.id %}"><h4>{{question.question_no}}. {{question.question_text}}</h4></a>
 		{% endfor %}
 	{% else%}
 		<h1>No questions added,click the options to add some</h1>

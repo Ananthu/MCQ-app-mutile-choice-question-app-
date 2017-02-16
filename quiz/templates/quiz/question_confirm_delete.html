@@ -1,0 +1,14 @@
+
+{% extends "quiz/base.html" %}
+
+
+{% block content %}
+
+<form method="post" class="focus-input" action="">
+	{% csrf_token %}   
+	 <ul>
+        <li>{{question}}</li>
+    </ul>
+<div class="submit-row"><input type="submit" value="Delete" class="default" name="__delete" /></div>
+</form>
+{% endblock %}
